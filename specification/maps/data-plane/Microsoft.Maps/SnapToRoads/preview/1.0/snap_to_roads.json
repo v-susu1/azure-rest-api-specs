@@ -192,7 +192,10 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/SnapToRoadsResponse"
+            }
           },
           "400": {
             "$ref": "#/responses/400"
@@ -297,6 +300,186 @@
           "type": "string",
           "readOnly": true,
           "description": "If available, the target causing the error."
+        }
+      }
+    },
+    "SnapToRoadsResponse": {
+      "description": "This object is returned from a successful Snap To Roads call",
+      "type": "object",
+      "properties": {
+        "route": {
+          "description": "The list of road elements forming the reconstructed route.",
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "$ref": "#/definitions/RoadElement"
+          }
+        },
+        "totalDistance": {
+          "description": "he length of the route in meters.",
+          "type": "number",
+          "readOnly": true
+        }
+      }
+    },
+    "GeoJSONPosition": {
+      "description": "A valid `GeoJSON Position` geometry type. A `Position` is an array of numbers with two or more elements. The first two elements are _longitude_ and _latitude_, precisely in that order. _Altitude/Elevation_ is an optional third element. Please refer to [RFC 7946](https://tools.ietf.org/html/rfc7946#section-3.1.1) for details.",
+      "type": "array",
+      "items": {
+        "type": "number",
+        "format": "double",
+        "minLength": 2
+      }
+    },
+    "LineString": {
+      "description": "A valid `GeoJSON LineString` geometry type. Please refer to [RFC 7946](https://tools.ietf.org/html/rfc7946#section-3.1.4) for details.",
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "The type of the geometry. Value should always be equal to `LineString`.",
+          "enum": [
+            "LineString"
+          ],
+          "type": "string"
+        },
+        "coordinates": {
+          "description": "Coordinates for the `LineString` geometry.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GeoJSONPosition"
+          },
+          "minLength": 2
+        }
+      },
+      "required": [
+        "coordinates"
+      ]
+    },
+    "RoadElementProperties": {
+      "description": "road element properties",
+      "type": "object",
+      "readOnly": true,
+      "properties": {
+        "id": {
+          "description": "Unique ID of the road element.",
+          "type": "string",
+          "readOnly": true
+        },
+        "address": {
+          "description": "Address information relevant to the road element.",
+          "type": "string",
+          "readOnly": true
+        },
+        "speedRestrictions": {
+          "description": "Speed restriction for a given `vehicleType`.",
+          "type": "object",
+          "readOnly": true,
+          "properties": {
+            "maximumSpeed": {
+              "description": "Maximum allowed speed.",
+              "type": "object",
+              "readOnly": true,
+              "properties": {
+                "value": {
+                  "description": "The actual value of speed",
+                  "type": "number",
+                  "readOnly": true
+                },
+                "unit": {
+                  "description": "The name of the used unit",
+                  "type": "string",
+                  "enum": ["kmph"],
+                  "readOnly": true
+                }
+              }
+            }
+          }
+        },
+        "frc": {
+          "description": "(Functional Road Class) represents a classification of roads based on the importance that the constituting roads have in the total road network.",
+          "type": "integer",
+          "readOnly": true,
+          "minimum": 0,
+          "maximum": 8
+        },
+        "formOfWay": {
+          "description": "Form of way represents the physical form of a road.This is based on a number of certain physical characteristics and traffic properties.",
+          "type": "string",
+          "readOnly": true,
+          "enum": [
+            "DualCarriageway",
+            "SingleCarriageway",
+            "Roundabout",
+            "MajorSlipRoad",
+            "ParallelRoad",
+            "RoadForAuthorities",
+            "EntranceToOrExitFromACarPark",
+            "SmallSlipRoad",
+            "RoadInEnclosedTrafficArea",
+            "RoadInPedestrianZone",
+            "ServiceRoad",
+            "ETAParkingArea",
+            "SpecialTrafficFigure",
+            "SmallMajorSlipRoad",
+            "ETAParkingBuilding",
+            "Walkway",
+            "Stairs",
+            "CulDeSac",
+            "ETAGallery",
+            "Connector",
+            "Unknown"
+          ]
+        },
+        "roadUse": {
+          "description": "It specifies how the road element is used for travel.",
+          "type": "string",
+          "readOnly": true,
+          "enum": [
+            "LimitedAccess",
+            "Arterial",
+            "Terminal",
+            "Ramp",
+            "Rotary",
+            "LocalStreet"
+          ]
+        },
+        "laneInfo": {
+          "description": "Lane Information refers to the collection of lane-related information stored in a Road Element.",
+          "type": "object",
+          "readOnly": true,
+          "properties": {
+            "numberOfLanes": {
+              "description": "Number of lanes the road segment has.",
+              "type": "integer",
+              "readOnly": true
+            }
+          }
+        }
+      }
+    },
+    "RoadElement": {
+      "description": "This object is returned from a successful Snap To Roads call",
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "GeojsonFeatureType",
+          "type": "string",
+          "enum": [
+            "Feature"
+          ],
+          "readOnly": true
+        },
+        "geometry": {
+          "description": "Coordinates for the `LineString` geometry.",
+          "type": "object",
+          "readOnly": true,
+          "$ref": "#/definitions/LineString"
+        },
+        "properties": {
+          "description": "Detailed information about the road element.",
+          "type": "object",
+          "readOnly": true,
+          "$ref": "#/definitions/RoadElementProperties"
         }
       }
     }
