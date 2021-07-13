@@ -306,6 +306,7 @@
     "SnapToRoadsResponse": {
       "description": "This object is returned from a successful Snap To Roads call",
       "type": "object",
+      "required": ["route"],
       "properties": {
         "route": {
           "description": "The list of road elements forming the reconstructed route.",
@@ -315,9 +316,19 @@
             "$ref": "#/definitions/RoadElement"
           }
         },
+        "projectedPoints": {
+          "description": "The list of the points projected on the road network which relates to the points from a request.",
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "$ref": "#/definitions/ProjectedPoint"
+          },
+          "maxItems": 100
+        },
         "totalDistance": {
           "description": "he length of the route in meters.",
           "type": "number",
+          "format": "double",
           "readOnly": true
         }
       }
@@ -327,8 +338,7 @@
       "type": "array",
       "items": {
         "type": "number",
-        "format": "double",
-        "minLength": 2
+        "format": "double"
       }
     },
     "LineString": {
@@ -347,13 +357,48 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/GeoJSONPosition"
-          },
-          "minLength": 2
+          }
         }
       },
       "required": [
         "coordinates"
       ]
+    },
+    "Point": {
+      "description": "A valid `GeoJSON Point` geometry type. Please refer to [RFC 7946](https://tools.ietf.org/html/rfc7946#section-3.1.4) for details.",
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "The type of the geometry. Value should always be equal to `Point`.",
+          "enum": [
+            "Point"
+          ],
+          "type": "string"
+        },
+        "coordinates": {
+          "description": "Coordinates for the `Point` geometry.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GeoJSONPosition"
+          }
+        }
+      },
+      "required": [
+        "coordinates"
+      ]
+    },
+    "ProjectedPointProperties": {
+      "description": "",
+      "type": "object",
+      "readOnly": true,
+      "properties": {
+        "routeIndex": {
+          "description": "The index of a matching road element from the route array. It can be equal to null if a point is not able to be matched to any road element",
+          "type": "integer",
+          "format": "int32",
+          "readOnly": true
+        }
+      }
     },
     "RoadElementProperties": {
       "description": "road element properties",
@@ -383,6 +428,7 @@
                 "value": {
                   "description": "The actual value of speed",
                   "type": "number",
+                  "format": "double",
                   "readOnly": true
                 },
                 "unit": {
@@ -398,6 +444,7 @@
         "frc": {
           "description": "(Functional Road Class) represents a classification of roads based on the importance that the constituting roads have in the total road network.",
           "type": "integer",
+          "format": "int32",
           "readOnly": true,
           "minimum": 0,
           "maximum": 8
@@ -451,35 +498,48 @@
             "numberOfLanes": {
               "description": "Number of lanes the road segment has.",
               "type": "integer",
+              "format": "int32",
               "readOnly": true
             }
           }
         }
       }
     },
+    "GeojsonFeatureType": {
+      "description": "GeojsonFeatureType",
+      "type": "string",
+      "enum": [
+        "Feature"
+      ],
+      "readOnly": true
+    },
     "RoadElement": {
-      "description": "This object is returned from a successful Snap To Roads call",
+      "description": "",
       "type": "object",
       "properties": {
         "type": {
-          "description": "GeojsonFeatureType",
-          "type": "string",
-          "enum": [
-            "Feature"
-          ],
-          "readOnly": true
+          "$ref": "#/definitions/GeojsonFeatureType"
         },
         "geometry": {
-          "description": "Coordinates for the `LineString` geometry.",
-          "type": "object",
-          "readOnly": true,
           "$ref": "#/definitions/LineString"
         },
         "properties": {
-          "description": "Detailed information about the road element.",
-          "type": "object",
-          "readOnly": true,
           "$ref": "#/definitions/RoadElementProperties"
+        }
+      }
+    },
+    "ProjectedPoint": {
+      "description": "",
+      "type": "object",
+      "properties": {
+        "type": {
+          "$ref": "#/definitions/GeojsonFeatureType"
+        },
+        "geometry": {
+          "$ref": "#/definitions/Point"
+        },
+        "properties" : {
+          "$ref": "#/definitions/ProjectedPointProperties"
         }
       }
     }
