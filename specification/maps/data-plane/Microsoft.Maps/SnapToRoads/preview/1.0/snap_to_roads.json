@@ -6,6 +6,7 @@
     "description": "Azure Maps Snap to Roads  REST APIs"
   },
   "host": "atlas.microsoft.com",
+  "basePath": "/",
   "schemes": [
     "https"
   ],
@@ -94,7 +95,70 @@
       }
     }
   },
+  "parameters": {
+    "ClientId": {
+      "name": "x-ms-client-id",
+      "description": "Specifies which account is intended for usage in conjunction with the Azure AD security model.  It represents a unique ID for the Azure Maps account and can be retrieved from Azure Maps management  plane Account API. To use Azure AD security in Azure Maps see the following [articles](https://aka.ms/amauthdetails) for guidance.",
+      "type": "string",
+      "in": "header",
+      "required": false,
+      "x-ms-parameter-location": "client"
+    },
+    "SubscriptionKey": {
+      "name": "subscription-key",
+      "description": "One of the Azure Maps keys provided from an Azure Map Account. Please refer to this [article](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication) for details on how to manage authentication.",
+      "type": "string",
+      "in": "query",
+      "required": false,
+      "x-ms-parameter-location": "client"
+    },
+    "ApiVersion": {
+      "name": "api-version",
+      "description": "Version number of Azure Maps API. Current version is 1.0",
+      "type": "string",
+      "in": "query",
+      "required": true,
+      "default": "1.0",
+      "x-ms-parameter-location": "client"
+    }
+  },
   "paths": {
+    "/snap-to-roads/snap-to-roads": {
+      "get": {
+        "x-publish": true,
+        "description": "**Reconstructing a driven road and getting the detailed insights by received points**\n\n**Applies to**: S0 and S1 pricing tiers.\n\n\n The endpoint received points to reconstruct the driven road. Points given as input are related to themselves and are a part of the same route.\n The matching algorithm chooses the driven road fitting to all of the given points and takes into account additional restrictions provided by the client.",
+        "operationId": "SnapToRoads_GetSnapToRoads",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ClientId"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionKey"
+          },
+          {
+            "$ref": "#/parameters/ApiVersion"
+          }
+        ]
+      }
+    },
+    "/snap-to-roads/road-segment": {
+      "get": {
+        "x-publish": true,
+        "description": "**Getting the detailed insights for a road's segment or a set of segments by received points**\n\n**Applies to**: S0 and S1 pricing tiers.\n\n\n The endpoint received matches the received points to the map road network. Points given as input to the Road Segment API can be unrelated to themselves and don't have to be a part of the same route. The matching algorithm chooses the closet road and takes into account additional restrictions provided by the client.",
+        "operationId": "SnapToRoads_RoadSegment",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ClientId"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionKey"
+          },
+          {
+            "$ref": "#/parameters/ApiVersion"
+          }
+        ]
+      }
+    }
   },
   "definitions": {
     "ODataErrorResponse": {
