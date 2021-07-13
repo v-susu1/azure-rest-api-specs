@@ -124,7 +124,7 @@
     "Query": {
       "name": "query",
       "in": "query",
-      "description": "Specifies the semicolon-separated list of coordinates. Each coordinate has to be comma-separated and calculated using EPSG4326 projection.The maximum allowed number of coordinates is **100** while the the minimum is **1**.",
+      "description": "Specifies the semicolon-separated list of coordinates. Each coordinate has to be comma-separated and calculated using EPSG4326 projection.The maximum allowed number of coordinates is **100** while the the minimum is **1**. \n e.g. `-122.336729,47.590868;-122.336042,47.590868`.",
       "required": true,
       "type": "string"
     },
@@ -189,7 +189,27 @@
           {
             "$ref": "#/parameters/VehicleType"
           }
-        ]
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "$ref": "#/responses/400"
+          },
+          "401": {
+            "$ref": "#/responses/401"
+          },
+          "403": {
+            "$ref": "#/responses/403"
+          },
+          "404": {
+            "$ref": "#/responses/404"
+          },
+          "500": {
+            "$ref": "#/responses/500"
+          }
+        }
       }
     },
     "/snap-to-roads/road-segment": {
@@ -219,7 +239,27 @@
           {
             "$ref": "#/parameters/VehicleType"
           }
-        ]
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "$ref": "#/responses/400"
+          },
+          "401": {
+            "$ref": "#/responses/401"
+          },
+          "403": {
+            "$ref": "#/responses/403"
+          },
+          "404": {
+            "$ref": "#/responses/404"
+          },
+          "500": {
+            "$ref": "#/responses/500"
+          }
+        }
       }
     }
   },
