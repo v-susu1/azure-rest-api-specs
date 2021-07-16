@@ -3384,7 +3384,7 @@
         }
       }
     },
-    "snapToRoadRequestPoints": {
+    "RequestPoints": {
       "description": "A list of Points. Each of them must have a geometry field and may have a properties field. It should contain at least **2** points and at most **100** points.",
       "type": "array",
       "items": {
@@ -3416,7 +3416,7 @@
       "required": ["points"],
       "properties": {
         "points": {
-          "$ref": "#/definitions/snapToRoadRequestPoints"
+          "$ref": "#/definitions/RequestPoints"
         }
       }
     },
@@ -3426,7 +3426,7 @@
       "required": ["points"],
       "properties": {
         "points": {
-          "$ref": "#/definitions/snapToRoadRequestPoints"
+          "$ref": "#/definitions/RequestPoints"
         }
       }
     }
