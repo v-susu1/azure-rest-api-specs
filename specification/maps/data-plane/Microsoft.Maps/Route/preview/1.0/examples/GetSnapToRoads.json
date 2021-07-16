@@ -1,0 +1,232 @@
+{
+  "parameters": {
+    "format": "json",
+    "api-version": "1.0",
+    "query": "-122.336729,47.590868;-122.336042,47.590868",
+    "fields":"{projectedPoints{type,geometry{type,coordinates},properties{routeIndex}},route{type,geometry{type,coordinates},properties{id,speedRestrictions{maximumSpeed{value,unit}},address{roadName,roadNumbers},frc,formOfWay,roadUse,laneInfo{numberOfLanes}}},totalDistance}",
+    "subscription-key": "[subscription-key]"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "route": [
+          {
+            "type": "Feature",
+            "geometry": {
+              "type": "LineString",
+              "coordinates": [
+                [
+                  -122.3364436626,
+                  47.5908033550
+                ],
+                [
+                  -122.3364959657,
+                  47.5906987488
+                ],
+                [
+                  -122.3365992308,
+                  47.5904224813
+                ]
+              ]
+            },
+            "properties": {
+              "id": "8d97bd32-b791-4606-bed5-7fd6cc6b93ea",
+              "speedRestrictions": {
+                "maximumSpeed": {
+                  "value": 48,
+                  "unit": "kmph"
+                }
+              },
+              "address": {
+                "roadName": "Colorado Ave S",
+                "roadNumbers": [
+                  "State Rte-519",
+                  "WA-519",
+                  "Washington State Route 519"
+                ]
+              },
+              "frc": 4,
+              "formOfWay": "SingleCarriageway",
+              "roadUse": "Arterial",
+              "laneInfo": {
+                "numberOfLanes": 3
+              }
+            }
+          },
+          {
+            "type": "Feature",
+            "geometry": {
+              "type": "LineString",
+              "coordinates": [
+                [
+                  -122.3365992308,
+                  47.5904224813
+                ],
+                [
+                  -122.3365120590,
+                  47.5903916359
+                ],
+                [
+                  -122.3363846540,
+                  47.5903540850
+                ],
+                [
+                  -122.3362760246,
+                  47.5903245807
+                ],
+                [
+                  -122.3361848295,
+                  47.5903151929
+                ],
+                [
+                  -122.3360989988,
+                  47.5903098285
+                ],
+                [
+                  -122.3359917104,
+                  47.5903084874
+                ]
+              ]
+            },
+            "properties": {
+              "id": "00005557-4100-0400-0000-0000001715f2",
+              "speedRestrictions": {
+                "maximumSpeed": {
+                  "value": 40,
+                  "unit": "kmph"
+                }
+              },
+              "address": {
+                "roadName": "S Atlantic St",
+                "roadNumbers": [
+                  "State Rte-519",
+                  "WA-519",
+                  "Washington State Route 519"
+                ]
+              },
+              "frc": 4,
+              "formOfWay": "SingleCarriageway",
+              "roadUse": "Arterial",
+              "laneInfo": {
+                "numberOfLanes": 6
+              }
+            }
+          },
+          {
+            "type": "Feature",
+            "geometry": {
+              "type": "LineString",
+              "coordinates": [
+                [
+                  -122.3359917104,
+                  47.5903084874
+                ],
+                [
+                  -122.3359943926,
+                  47.5908677280
+                ]
+              ]
+            },
+            "properties": {
+              "id": "00005557-4100-0400-0000-0000001d34a1",
+              "speedRestrictions": {
+                "maximumSpeed": {
+                  "value": 40,
+                  "unit": "kmph"
+                }
+              },
+              "address": {
+                "roadName": "E Frontage Rd S",
+                "roadNumbers": [
+                  "State Rte-519",
+                  "WA-519",
+                  "Washington State Route 519"
+                ]
+              },
+              "frc": 3,
+              "formOfWay": "SingleCarriageway",
+              "roadUse": "Arterial",
+              "laneInfo": {
+                "numberOfLanes": 4
+              }
+            }
+          }
+        ],
+        "projectedPoints": [
+          {
+            "type": "Feature",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                -122.3364437330,
+                47.5908027610
+              ]
+            },
+            "properties": {
+              "routeIndex": 0
+            }
+          },
+          {
+            "type": "Feature",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                -122.3359951336,
+                47.5908682219
+              ]
+            },
+            "properties": {
+              "routeIndex": 2
+            }
+          }
+        ],
+        "totalDistance": 154.1621681976
+      }
+    },
+    "400": {
+      "headers": {},
+      "body": {
+        "error": {
+          "code": "400 BadRequest",
+          "message": "Bad request: one or more parameters were incorrectly specified or are mutually exclusive."
+        }
+      }
+    },
+    "401": {
+      "headers": {},
+      "body": {
+        "error": {
+          "code": "401 Unauthorized",
+          "message": "Access denied due to invalid subscription key. Make sure to provide a valid key for an active subscription."
+        }
+      }
+    },
+    "403": {
+      "headers": {},
+      "body": {
+        "error": {
+          "code": "403 Forbidden",
+          "message": "Permission, capacity, or authentication issues."
+        }
+      }
+    },
+    "404": {
+      "headers": {},
+      "body": {
+        "error": {
+          "code": "404 NotFound",
+          "message": "Not Found: the requested resource could not be found, but it may be available again in the future."
+        }
+      }
+    },
+    "500": {
+      "headers": {},
+      "body": {
+        "error": {
+          "code": "500 InternalServerError",
+          "message": "An error occurred while processing the request. Please try again later."
+        }
+      }
+    }
+  }
+}

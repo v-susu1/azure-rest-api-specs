@@ -1710,6 +1710,11 @@
         "x-publish": true,
         "description": "**Reconstructing a driven road and getting the detailed insights by received coordinates**\n\n**Applies to**: S0 and S1 pricing tiers.\n\n\n The endpoint received coordinates to reconstruct the driven road. Coordinates given as input are related to themselves and are a part of the same route.\n The matching algorithm chooses the driven road fitting to all of the given points and takes into account additional restrictions provided by the client.",
         "operationId": "Route_GetSnapToRoads",
+        "x-ms-examples": {
+          "GetSnapToRoads": {
+            "$ref": "./examples/GetSnapToRoads.json"
+          }
+        },
         "parameters": [
           {
             "$ref": "#/parameters/ClientId"
@@ -1764,6 +1769,11 @@
         "x-publish": true,
         "description": "**Reconstructing a driven road and getting the detailed insights by received coordinates**\n\n**Applies to**: S0 and S1 pricing tiers.\n\n\n The endpoint received coordinates to reconstruct the driven road. Coordinates given as input are related to themselves and are a part of the same route.\n The matching algorithm chooses the driven road fitting to all of the given points and takes into account additional restrictions provided by the client.",
         "operationId": "Route_PostSnapToRoads",
+        "x-ms-examples": {
+          "PostSnapToRoads": {
+            "$ref": "./examples/PostSnapToRoads.json"
+          }
+        },
         "parameters": [
           {
             "$ref": "#/parameters/ClientId"
@@ -1821,6 +1831,11 @@
         "x-publish": true,
         "description": "**Getting the detailed insights for a road's segment or a set of segments by received coordinates**\n\n**Applies to**: S0 and S1 pricing tiers.\n\n\n The endpoint received matches the received coordinates to the map road network. Coordinates given as input to the Road Segment API can be unrelated to themselves and don't have to be a part of the same route. The matching algorithm chooses the closest road and takes into account additional restrictions provided by the client.",
         "operationId": "Route_GetRoadSegment",
+        "x-ms-examples": {
+          "GetRoadSegment": {
+            "$ref": "./examples/GetRoadSegment.json"
+          }
+        },
         "parameters": [
           {
             "$ref": "#/parameters/ClientId"
@@ -1875,6 +1890,11 @@
         "x-publish": true,
         "description": "**Reconstructing a driven road and getting the detailed insights by received coordinates**\n\n**Applies to**: S0 and S1 pricing tiers.\n\n\n The endpoint received coordinates to reconstruct the driven road. Coordinates given as input are related to themselves and are a part of the same route.\n The matching algorithm chooses the driven road fitting to all of the given points and takes into account additional restrictions provided by the client.",
         "operationId": "Route_PostRoadSegment",
+        "x-ms-examples": {
+          "PostRoadSegment": {
+            "$ref": "./examples/PostRoadSegment.json"
+          }
+        },
         "parameters": [
           {
             "$ref": "#/parameters/ClientId"
@@ -3401,7 +3421,10 @@
             "type": "object",
             "properties": {
               "heading": {
-                "$ref": "#/parameters/VehicleHeading"
+                "description": "The directional heading of the vehicle in degrees starting at true North and continuing in clockwise direction. North is 0 degrees, east is 90 degrees, south is 180 degrees, west is 270 degrees. Possible values 0-359",
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 359
               }
             }
           }
