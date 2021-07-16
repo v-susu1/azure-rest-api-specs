@@ -1912,7 +1912,7 @@
             "$ref": "#/parameters/RoadSegmentResponseFields"
           },
           {
-            "name": "snapToRoadRequestBody",
+            "name": "roadSegmentRequestBody",
             "description": "Used for reconstructing a route by received coordinates",
             "in": "body",
             "required": true,

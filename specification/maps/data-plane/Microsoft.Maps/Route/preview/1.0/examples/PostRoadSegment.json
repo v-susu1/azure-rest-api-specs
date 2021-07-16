@@ -4,7 +4,30 @@
     "api-version": "1.0",
     "query": "-122.336729,47.590868;-122.336042,47.590868",
     "fields":"{projectedPoints{type,geometry{type,coordinates},properties{roadElements{index}}},roadElements{type,geometry{type,coordinates},properties{id,speedRestrictions{maximumSpeed{value,unit}},address{roadName,roadNumbers},frc,formOfWay,roadUse,laneInfo{numberOfLanes}}}}",
-    "subscription-key": "[subscription-key]"
+    "subscription-key": "[subscription-key]",
+    "roadSegmentRequestBody": {
+      "points": [{
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-122.653690, 38.467323]
+        },
+        "properties": {
+          "heading": 0
+        }
+      },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [-122.654001, 38.468818]
+          },
+          "properties": {
+            "heading": 0
+          }
+        }
+      ]
+    }
   },
   "responses": {
     "200": {
