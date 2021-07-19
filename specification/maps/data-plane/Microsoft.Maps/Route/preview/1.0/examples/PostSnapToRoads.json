@@ -3,7 +3,7 @@
     "format": "json",
     "api-version": "1.0",
     "query": "-122.336729,47.590868;-122.336042,47.590868",
-    "fields":"\\{projectedPoints\\{type,geometry\\{type,coordinates\\},properties\\{routeIndex\\}\\},route\\{type,geometry\\{type,coordinates\\},properties\\{id,speedRestrictions\\{maximumSpeed\\{value,unit\\}\\},address\\{roadName,roadNumbers\\},frc,formOfWay,roadUse,laneInfo\\{numberOfLanes\\}\\}\\},totalDistance\\}",
+    "fields": "{projectedPoints{type,geometry{type,coordinates},properties{routeIndex}},route{type,geometry{type,coordinates},properties{id,speedRestrictions{maximumSpeed{value,unit}},address{roadName,roadNumbers},frc,formOfWay,roadUse,laneInfo{numberOfLanes}}},totalDistance}",
     "subscription-key": "[subscription-key]",
     "snapToRoadRequestBody": {
       "points": [{
