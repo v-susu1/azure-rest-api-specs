@@ -3,8 +3,8 @@
     "format": "json",
     "api-version": "1.0",
     "query": "-122.336729,47.590868;-122.336042,47.590868",
-    "fields": "{route{geometry{coordinates}}}",
-    "subscription-key": "[subscription-key]"
+    "fields": "{abc}",
+    "subscription-key": "{subscription-key}"
   },
   "responses": {
     "200": {
