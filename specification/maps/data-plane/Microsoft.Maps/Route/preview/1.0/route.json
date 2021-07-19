@@ -902,7 +902,8 @@
       "in": "query",
       "description": "Specifies the semicolon-separated list of coordinates. Each coordinate has to be comma-separated and calculated using EPSG4326 projection.The maximum allowed number of coordinates is **100** while the the minimum is **2**. \n e.g. `-122.336729,47.590868;-122.336042,47.590868`.",
       "required": true,
-      "type": "string"
+      "type": "string",
+      "x-ms-parameter-location": "method"
     },
     "VehicleType":{
       "name": "vehicleType",
@@ -911,7 +912,8 @@
       "required": false,
       "type": "string",
       "enum": ["PassengerCar", "Bus", "Truck"],
-      "default": "PassengerCar"
+      "default": "PassengerCar",
+      "x-ms-parameter-location": "method"
     },
     "SnapToRoadsResponseFields": {
       "name": "fields",
@@ -919,7 +921,8 @@
       "description": "The fields to be included in the response, nested as in the response schema.\n\n * In order to obtain all data, it is necessary to place the whole object in the query (see below).\n * An empty object (empty { }) in a fields string is treated as a malformed request.\n\n Value needed to obtain all data: `{projectedPoints{type,geometry{type,coordinates},properties{routeIndex}},route{type,geometry{type,coordinates},properties{id,speedRestrictions{maximumSpeed{value,unit}},address{roadName,roadNumbers},frc,formOfWay,roadUse,laneInfo{numberOfLanes}}},totalDistance}`",
       "required": false,
       "type": "string",
-      "default": "{route{geometry{coordinates}}}"
+      "default": "{route{geometry{coordinates}}}",
+      "x-ms-parameter-location": "method"
     },
     "RoadSegmentResponseFields": {
       "name": "fields",
@@ -927,7 +930,8 @@
       "description": "The fields to be included in the response, nested as in the response schema.\n\n * In order to obtain all data, it is necessary to place the whole object in the query (see below).\n * An empty object (empty { }) in a fields string is treated as a malformed request.\n\n Value needed to obtain all data: `{projectedPoints{type,geometry{type,coordinates},properties{roadElements{index}}},roadElements{type,geometry{type,coordinates},properties{id,speedRestrictions{maximumSpeed{value,unit}},address{roadName,roadNumbers},frc,formOfWay,roadUse,laneInfo{numberOfLanes}}}}`",
       "required": false,
       "type": "string",
-      "default": "{projectedPoints{geometry{coordinates}}}"
+      "default": "{projectedPoints{geometry{coordinates}}}",
+      "x-ms-parameter-location": "method"
     }
   },
   "paths": {
