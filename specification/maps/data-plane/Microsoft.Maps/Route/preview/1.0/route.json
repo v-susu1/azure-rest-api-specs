@@ -918,7 +918,6 @@
     "SnapToRoadsResponseFields": {
       "name": "fields",
       "in": "query",
-//      "description": "The fields to be included in the response, nested as in the response schema.\n\n * In order to obtain all data, it is necessary to place the whole object in the query (see below).\n * An empty object (empty { }) in a fields string is treated as a malformed request.\n\n Value needed to obtain all data: `{projectedPoints{type,geometry{type,coordinates},properties{routeIndex}},route{type,geometry{type,coordinates},properties{id,speedRestrictions{maximumSpeed{value,unit}},address{roadName,roadNumbers},frc,formOfWay,roadUse,laneInfo{numberOfLanes}}},totalDistance}`",
       "description": "<code>{\n  projectedPoints{\n    type,\n    geometry{\n      type,\n      coordinates\n    },\n    properties{\n      routeIndex\n    }\n  },\n  route{\n    type,\n    geometry{\n      type,\n      coordinates\n    },\n    properties{\n      id,\n      speedRestrictions{\n        maximumSpeed{\n          value,\n          unit\n        }\n      },\n      address{\n        roadName,\n        roadNumbers,\n        municipality,\n        countryName,\n        countryCode,\n        countrySubdivision\n      },\n      frc,\n      formOfWay,\n      roadUse,\n      laneInfo{\n        numberOfLanes\n      }\n    }\n  },\n  totalDistance\n}</code>",
       "required": false,
       "type": "string",
