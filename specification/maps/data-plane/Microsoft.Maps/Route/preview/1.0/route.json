@@ -128,7 +128,7 @@
       "in": "path",
       "required": true,
       "enum": [
-        "json"
+        "{format}"
       ],
       "x-ms-enum": {
         "name": "JsonFormat",
