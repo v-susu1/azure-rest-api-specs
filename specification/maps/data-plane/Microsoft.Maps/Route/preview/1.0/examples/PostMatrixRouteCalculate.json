@@ -1,6 +1,6 @@
 {
   "parameters": {
-    "format": "json",
+    "format": "{format}",
     "api-version": "1.0",
     "subscription-key": "[subscription-key]",
     "routeType": "shortest",
