@@ -1,6 +1,6 @@
 {
   "parameters": {
-    "format": "json",
+    "format": "{format}",
     "api-version": "1.0",
     "query": "-122.336729,47.590868;-122.336042,47.590868",
     "fields": "[abc]",
