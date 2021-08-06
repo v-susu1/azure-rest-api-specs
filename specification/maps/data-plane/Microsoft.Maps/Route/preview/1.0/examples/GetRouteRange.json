@@ -1,6 +1,6 @@
 {
   "parameters": {
-    "format": "{format}",
+    "format": "json",
     "api-version": "1.0",
     "query": "50.97452,5.86605",
     "subscription-key": "[subscription-key]",
